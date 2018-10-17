@@ -4,7 +4,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 /**
- * A tabletop GUI for a game of Checkers
+ * A Table-top GUI for a game of Checkers.
  * 
  * @author Shely Lin
  * @version 2018
@@ -12,7 +12,9 @@ import javax.swing.JFrame;
  */
 public class Start extends JFrame {
 	
-	// Start class constructor
+	/**
+	 *  Start class constructor.
+	 */
 	public Start() {
 		Board board = new Board();
 		this.setSize(new Dimension(1000, 1000));
@@ -23,7 +25,11 @@ public class Start extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
-	// A starting point for the application
+	/**
+	 * A starting point for the application.
+	 * 
+	 * @param args as an array of String objects
+	 */
 	public static void main(String[] args) {
 		new Start();
 	}

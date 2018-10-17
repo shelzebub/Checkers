@@ -2,12 +2,10 @@ package checkers;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * A board to hold the contents of the game
+ * A board to hold the contents of the game.
  * 
  * @author Shely Lin
  * @version 2018
@@ -23,14 +21,17 @@ public class Board extends JPanel {
 	
 	// the Board itself is the GUI holder so "this" keyword for front-end
 	
-	/*
-	 * Create a new chess board
+	/**
+	 * Create a new chess board.
 	 */
 	public Board() {
 		this.setLayout(new GridLayout(ROWS, COLS));
 		populateBoard();		
 	}
 	
+	/**
+	 *  Populate the Board with Tile objects to create a checker board with coordinates.
+	 */
 	private void populateBoard() {	
 		char top = 'a';
 		char bot = 'a';
