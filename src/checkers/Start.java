@@ -1,8 +1,6 @@
 package checkers;
 
 import java.awt.Dimension;
-import java.awt.GridLayout;
-
 import javax.swing.JFrame;
 
 /**
@@ -14,9 +12,6 @@ import javax.swing.JFrame;
  */
 public class Start extends JFrame {
 	
-	// A JFrame to hold the application GUI
-	//private static JFrame window = new JFrame();
-	
 	// Start class constructor
 	public Start() {
 		Board board = new Board();
@@ -25,12 +20,11 @@ public class Start extends JFrame {
 		this.setTitle("Checkers");
 		this.setLocationRelativeTo(null);
 		this.add(board);
-		
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
 	// A starting point for the application
 	public static void main(String[] args) {
 		new Start();
-		
 	}
 }

@@ -1,7 +1,6 @@
 package checkers;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
@@ -16,37 +15,53 @@ import javax.swing.JPanel;
  */
 public class Board extends JPanel {
 	
-	public static final int ROWS = 8;
-	public static final int COLS = 8;
+	public static final int ROWS = 10;
+	public static final int COLS = 10;
 	
-	private static JPanel[][] tiles = new JPanel[ROWS][COLS];
+	// Back-end
+	//private static JPanel[][] tiles = new JPanel[ROWS][COLS];
 	
+	// the Board itself is the GUI holder so "this" keyword for front-end
+	
+	/*
+	 * Create a new chess board
+	 */
 	public Board() {
-		this.setSize(700, 700);
 		this.setLayout(new GridLayout(ROWS, COLS));
-		populateBoard();
-		this.setBackground(Color.blue);
-		refreshBoard();
+		populateBoard();		
 	}
 	
-	private void refreshBoard() {
-		this.repaint();
+	private void populateBoard() {	
+		char top = 'a';
+		char bot = 'a';
+		
 		for (int i = 0; i < ROWS; i++) {
 			for (int j = 0; j < COLS; j++) {
-				tiles[i][j].repaint();
-			}
-		}
-	}
-	
-	private void populateBoard() {
-		for (int i = 0; i < ROWS; i++) {
-			for (int j = 0; j < COLS; j++) {
-				if (i % 2 == j % 2) {
-					tiles[i][j] = new Tile(i, j, 60, Color.black);
+				if (i == 0 | i == 9) {
+					if(j == 0 | j == 9) {
+						this.add(new Tile(i, j, Color.white));
+					} else {
+						if (i == 0) {
+							this.add(new Tile(i, j, Color.white, Character.toString(top)));
+							top++;	
+							
+						} else if (i == 9) {
+							this.add(new Tile(i, j, Color.white, Character.toString(bot)));
+							bot++;
+						}
+					}
+										
+				} else if (j == 0 | j == 9) {
+					this.add(new Tile(i, j, Color.white, Integer.toString(9-i)));
+					
+				} else if (i % 2 == j % 2) {
+					this.add(new Tile(i, j, Color.black));
+					//tiles[i][j] = new Tile(i, j, Color.black);
+					
 				} else {
-					tiles[i][j] = new Tile(i, j, 60, Color.lightGray);
+					this.add(new Tile(i, j, Color.lightGray));
+					//tiles[i][j] = new Tile(i, j, Color.lightGray);
 				}
-				this.add(tiles[i][j]);
 			}
 		}
 	}
